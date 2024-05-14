@@ -94,6 +94,9 @@ def sha512(user_input):
 
 
 if __name__ == '__main__':
-    user_in = input("Enter the string to hash: ")
+    with open('plain_text.txt', 'r') as f:
+        user_in = f.read()
+
     hashed = sha512(user_in)
-    print("Hashed result:", ''.join(hex(x)[2:].zfill(16) for x in hashed))
+    with open('hashed_value.txt', 'w') as f:
+        f.write(''.join(hex(x)[2:].zfill(16) for x in hashed))
